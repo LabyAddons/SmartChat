@@ -3,7 +3,9 @@ package de.jardateien.smartchat;
 import de.jardateien.smartchat.api.PlaceholderRegistry;
 import de.jardateien.smartchat.api.generated.ReferenceStorage;
 import de.jardateien.smartchat.listeners.ChatMessageSendListener;
-import de.jardateien.smartchat.listeners.ChatReceiveListener;
+import de.jardateien.smartchat.listeners.ChatPingReceiveListener;
+import de.jardateien.smartchat.listeners.CopyChatReceiveListener;
+import de.jardateien.smartchat.listeners.TimestampChatReceiveListener;
 import de.jardateien.smartchat.registry.placeholder.*;
 import de.jardateien.smartchat.ui.activity.PlaceholderMenuChatActivity;
 import net.labymod.api.addon.LabyAddon;
@@ -25,8 +27,20 @@ public class SmartChatAddon extends LabyAddon<SmartChatConfiguration> {
 
     this.registerSettingCategory();
 
+    /*
+    https://modrinth.com/mod/compacting?version=1.21.6
+    https://modrinth.com/mod/nochatclear
+    https://modrinth.com/mod/chat-tools/gallery
+    https://modrinth.com/mod/chat-highlight/gallery
+    https://modrinth.com/mod/chatutils/gallery?version=1.20.4&loader=fabric
+    https://modrinth.com/mod/chatstack/gallery?version=1.21.5
+    https://modrinth.com/mod/chatping/gallery
+     */
+
     this.registerListener(new ChatMessageSendListener());
-    this.registerListener(new ChatReceiveListener(this));
+    this.registerListener(new ChatPingReceiveListener(this));
+    this.registerListener(new CopyChatReceiveListener(this));
+    this.registerListener(new TimestampChatReceiveListener(this));
 
     ChatButtonWidget placeholderMenu = ChatButtonWidget.icon(
         "placeholders",
@@ -46,6 +60,7 @@ public class SmartChatAddon extends LabyAddon<SmartChatConfiguration> {
     placeholderRegistry.register(new LocationYPlaceholder(this));
     placeholderRegistry.register(new LocationZPlaceholder(this));
     placeholderRegistry.register(new PositionPlaceholder(this));
+    placeholderRegistry.register(new RotationPlaceholder(this));
     placeholderRegistry.register(new WorldBiomePlaceholder(this));
     placeholderRegistry.register(new WorldDimensionPlaceholder(this));
   }

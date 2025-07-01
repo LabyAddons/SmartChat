@@ -2,6 +2,7 @@ package de.jardateien.smartchat.listeners;
 
 import de.jardateien.smartchat.SmartChatAddon;
 import de.jardateien.smartchat.config.SmartChatConfiguration;
+import de.jardateien.smartchat.utils.Sound;
 import net.labymod.api.Laby;
 import net.labymod.api.LabyAPI;
 import net.labymod.api.client.chat.ChatMessage;
@@ -10,11 +11,11 @@ import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.chat.ChatReceiveEvent;
 import java.util.Objects;
 
-public class ChatReceiveListener {
+public class ChatPingReceiveListener {
 
   private final SmartChatConfiguration configuration;
 
-  public ChatReceiveListener(SmartChatAddon addon) {
+  public ChatPingReceiveListener(SmartChatAddon addon) {
     this.configuration = addon.configuration();
   }
 
@@ -29,9 +30,11 @@ public class ChatReceiveListener {
     String message = chatMessage.getFormattedText();
     if(!message.contains(labyAPI.getName())) return;
 
+    Sound type = this.configuration.type().get();
+
     labyAPI.minecraft().sounds()
-        .playSound(ResourceLocation.create("labymod", "marker.marker_notify"),
-            this.configuration.getVolume().get(), this.configuration.getPitch().get());
+        .playSound(ResourceLocation.create(type.getNamespace(), type.getPath()),
+            this.configuration.volume().get(), this.configuration.pitch().get());
   }
 
 }

@@ -1,16 +1,16 @@
 package de.jardateien.smartchat.registry.placeholder;
 
-import de.jardateien.smartchat.SmartChatAddon;
 import de.jardateien.smartchat.api.SmartChatPlaceholder;
 import net.labymod.api.Laby;
+import net.labymod.api.addon.LabyAddon;
 import net.labymod.api.client.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class PositionPlaceholder extends SmartChatPlaceholder {
+public class RotationPlaceholder extends SmartChatPlaceholder {
 
-  public PositionPlaceholder(SmartChatAddon addon) {
-    super(addon, "position");
+  public RotationPlaceholder(@NotNull LabyAddon<?> addon) {
+    super(addon, "rotation");
   }
 
   @Override
@@ -22,8 +22,6 @@ public class PositionPlaceholder extends SmartChatPlaceholder {
   public @Nullable String parse() {
     Player player = Laby.labyAPI().minecraft().getClientPlayer();
     if(player == null) return null;
-    return "[x: " + DECIMAL_FORMAT.format(player.position().getX()) +
-        ", y: " + DECIMAL_FORMAT.format(player.position().getY()) +
-        ", z: " + DECIMAL_FORMAT.format(player.position().getZ()) + "]";
+    return "[Yaw: " + DECIMAL_FORMAT.format(player.getRotationYaw()) + ", Pitch: " + DECIMAL_FORMAT.format(player.getRotationPitch()) + "]";
   }
 }

@@ -5,22 +5,53 @@
         "name": "Enabled"
       },
       "header": {
-        "general": {
-          "name": "General"
+        "copy": {
+          "name": "Copy Message"
+        },
+        "timestamp": {
+          "name": "Timestamp"
         },
         "chatNotification": {
           "name": "Chat Notification"
         }
       },
-      "locationFormat": {
-        "name": "Location Format"
+      "enabledCopy": {
+        "name": "Enabled Copy",
+        "description": "Enabled copy for message"
       },
-      "positionFormat": {
-        "name": "Position Format"
+      "copyFormat": {
+        "name": "Copy Format"
+      },
+      "copyHover": {
+        "name": "Copy Hover Message"
+      },
+      "enabledTimestamp": {
+        "name": "Enabled Timestamp",
+        "description": "Enabled timestamp in chat"
+      },
+      "timestampStyle": {
+        "name": "Timestamp Style"
+      },
+      "timestampFormat": {
+        "name": "Timestamp Format"
       },
       "pingSound": {
         "name": "Ping sound",
         "description": "Plays a sound when someone writes your name in chat"
+      },
+      "type": {
+        "name": "Type",
+        "description": "Select your favorite sound",
+        "entries": {
+          "labymodMarkerNotify": "Marker Notify",
+          "labymodMusicPop": "Music Pop",
+          "labymodLootboxCommon": "Lootbox Common",
+          "labymodLootboxSpecial": "Lootbox Special",
+          "labymodButtonOn": "Button on",
+          "labymodButtonOff": "Button off",
+
+          "minecraftChickenPop": "Chicken Pop"
+        }
       },
       "volume": {
         "name": "Volume"
@@ -39,6 +70,7 @@
       "y": "Shows your current Y coordinate (vertical height or elevation in the world).",
       "z": "Displays your current Z coordinate (north/south position in the world).",
       "position": "Shows a formatted string including your position and orientation (coordinates + yaw/pitch).",
+      "rotation": "Displays the pitch and yaw angle of your head, useful for orientation.",
       "biome": "Displays the name of the biome the player is currently in.",
       "dimension": "Indicates the current dimension the player is in."
     },
