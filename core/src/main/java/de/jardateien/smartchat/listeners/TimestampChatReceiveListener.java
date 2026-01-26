@@ -20,7 +20,7 @@ public class TimestampChatReceiveListener {
     this.pattern = "([dMyHhmsaSE]+|'.*?'|[^dMyHhmsaSE'])*";
   }
 
-  @Subscribe(Priority.FIRST)
+  @Subscribe(127) //Edit message after customnametags addon
   public void onChatReceive(ChatReceiveEvent receiveEvent) {
     if(!this.configuration.enabled().get() || !this.configuration.timestamp().get())
       return;

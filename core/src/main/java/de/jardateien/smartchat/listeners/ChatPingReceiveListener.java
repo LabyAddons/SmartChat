@@ -20,7 +20,7 @@ public class ChatPingReceiveListener {
     this.configuration = addon.configuration();
   }
 
-  @Subscribe(Priority.LATEST)
+  @Subscribe()
   public void onChatReceive(ChatReceiveEvent receiveEvent) {
     if(!this.configuration.enabled().get() || !this.configuration.enabledPing().get()) return;
     ChatMessage chatMessage = receiveEvent.chatMessage();
