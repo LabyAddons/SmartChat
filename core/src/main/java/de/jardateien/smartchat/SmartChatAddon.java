@@ -2,6 +2,7 @@ package de.jardateien.smartchat;
 
 import de.jardateien.smartchat.api.PlaceholderRegistry;
 import de.jardateien.smartchat.api.generated.ReferenceStorage;
+import de.jardateien.smartchat.listeners.AntiCommandChokerListener;
 import de.jardateien.smartchat.listeners.ChatMessageSendListener;
 import de.jardateien.smartchat.listeners.ChatPingReceiveListener;
 import de.jardateien.smartchat.listeners.CopyChatReceiveListener;
@@ -37,7 +38,8 @@ public class SmartChatAddon extends LabyAddon<SmartChatConfiguration> {
     https://modrinth.com/mod/chatping/gallery
      */
 
-    this.registerListener(new ChatMessageSendListener());
+    this.registerListener(new AntiCommandChokerListener(this));
+    this.registerListener(new ChatMessageSendListener(this));
     this.registerListener(new ChatPingReceiveListener(this));
     this.registerListener(new CopyChatReceiveListener(this));
     this.registerListener(new TimestampChatReceiveListener(this));

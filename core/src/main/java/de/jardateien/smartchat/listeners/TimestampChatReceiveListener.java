@@ -4,6 +4,7 @@ import de.jardateien.smartchat.SmartChatAddon;
 import de.jardateien.smartchat.config.SmartChatConfiguration;
 import net.labymod.api.Laby;
 import net.labymod.api.client.component.Component;
+import net.labymod.api.event.Priority;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.chat.ChatReceiveEvent;
 import java.text.SimpleDateFormat;
@@ -19,9 +20,10 @@ public class TimestampChatReceiveListener {
     this.pattern = "([dMyHhmsaSE]+|'.*?'|[^dMyHhmsaSE'])*";
   }
 
-  @Subscribe
+  @Subscribe(Priority.FIRST)
   public void onChatReceive(ChatReceiveEvent receiveEvent) {
-    if(!this.configuration.enabled().get() || !this.configuration.timestamp().get()) return;
+    if(!this.configuration.enabled().get() || !this.configuration.timestamp().get())
+      return;
 
     String msg = receiveEvent.chatMessage().getPlainText();
     if (msg.trim().isEmpty())
@@ -31,17 +33,18 @@ public class TimestampChatReceiveListener {
     if(!timestampFormat.matches(this.pattern))
       return;
 
-    SimpleDateFormat dataFormat = new SimpleDateFormat(timestampFormat);
-
-    String timestampStyle = this.configuration.timestampStyle().get();
-    if(!timestampStyle.contains("{time}"))
+    String timestampStyle = this.configuration.timestampStyle().get().toLowerCase();
+    if(!timestampStyle.contains("{time}")) {
+      this.configuration.timestampStyle().set("&e{time} &8| &r");
       return;
+    }
 
-    timestampStyle = timestampStyle.replace("{time}", dataFormat.format(new Date()));
-
-    receiveEvent.setMessage(Component.text(
-        Laby.references().componentMapper().translateColorCodes(timestampStyle))
-        .append(receiveEvent.message()));
+    SimpleDateFormat dataFormat = new SimpleDateFormat(timestampFormat);
+    receiveEvent.setMessage(
+        Component.text(
+            Laby.references().componentMapper().translateColorCodes(timestampStyle.replace("{time}", dataFormat.format(new Date()))))
+            .append(receiveEvent.message())
+    );
   }
 
 }

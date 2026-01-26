@@ -7,6 +7,7 @@ import net.labymod.api.Laby;
 import net.labymod.api.LabyAPI;
 import net.labymod.api.client.chat.ChatMessage;
 import net.labymod.api.client.resources.ResourceLocation;
+import net.labymod.api.event.Priority;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.chat.ChatReceiveEvent;
 import java.util.Objects;
@@ -19,7 +20,7 @@ public class ChatPingReceiveListener {
     this.configuration = addon.configuration();
   }
 
-  @Subscribe
+  @Subscribe(Priority.LATEST)
   public void onChatReceive(ChatReceiveEvent receiveEvent) {
     if(!this.configuration.enabled().get() || !this.configuration.enabledPing().get()) return;
     ChatMessage chatMessage = receiveEvent.chatMessage();

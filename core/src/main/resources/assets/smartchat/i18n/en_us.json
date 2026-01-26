@@ -5,6 +5,12 @@
         "name": "Enabled"
       },
       "header": {
+        "general": {
+          "name": "General"
+        },
+        "antiCommandChoker": {
+          "name": "AntiCommandChoker"
+        },
         "copy": {
           "name": "Copy Message"
         },
@@ -13,6 +19,18 @@
         },
         "chatNotification": {
           "name": "Chat Notification"
+        }
+      },
+      "enabledCommandChoker": {
+        "name": "Enabled AntiCommandChoker",
+        "description": "Prevents accidental command execution caused by typing '7' instead of '/'."
+      },
+      "commandSendInstantly": {
+        "name": "Send Commands Instantly",
+        "description": "Automatically sends the command even if '7' is typed instead of '/'.",
+        "button": {
+          "runCommand": "§a[Run Command]",
+          "clipboard": "§2[Clipboard]"
         }
       },
       "enabledCopy": {

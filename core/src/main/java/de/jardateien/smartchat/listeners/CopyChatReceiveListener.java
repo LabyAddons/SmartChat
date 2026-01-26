@@ -7,6 +7,7 @@ import net.labymod.api.client.component.Component;
 import net.labymod.api.client.component.event.ClickEvent;
 import net.labymod.api.client.component.event.HoverEvent;
 import net.labymod.api.client.render.font.ComponentMapper;
+import net.labymod.api.event.Priority;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.chat.ChatReceiveEvent;
 
@@ -18,7 +19,7 @@ public class CopyChatReceiveListener {
     this.configuration = addon.configuration();
   }
 
-  @Subscribe(126)
+  @Subscribe(Priority.EARLY)
   public void onChatReceive(ChatReceiveEvent receiveEvent) {
     if(!this.configuration.enabled().get() || !this.configuration.copy().get()) return;
 

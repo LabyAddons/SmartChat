@@ -6,7 +6,7 @@ plugins {
 val versions = providers.gradleProperty("net.labymod.minecraft-versions").get().split(";")
 
 group = "de.jardateien.smartchat"
-version = providers.environmentVariable("VERSION").getOrElse("1.1.5")
+version = providers.environmentVariable("VERSION").getOrElse("1.2.5")
 
 labyMod {
     defaultPackageName = "de.jardateien.smartchat"

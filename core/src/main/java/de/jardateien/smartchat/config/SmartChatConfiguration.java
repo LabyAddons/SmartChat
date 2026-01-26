@@ -14,8 +14,15 @@ import net.labymod.api.configuration.settings.annotation.SettingSection;
 @ConfigName("settings")
 public class SmartChatConfiguration extends AddonConfig {
 
+  @SettingSection(value = "general", center = true)
   @SwitchSetting
   private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
+
+  @SettingSection(value = "antiCommandChoker", center = true)
+  @SwitchSetting
+  private final ConfigProperty<Boolean> enabledCommandChoker = new ConfigProperty<>(true);
+  @SwitchSetting
+  private final ConfigProperty<Boolean> commandSendInstantly = new ConfigProperty<>(true);
 
   @SettingSection(value = "timestamp", center = true)
   @SwitchSetting
@@ -53,6 +60,13 @@ public class SmartChatConfiguration extends AddonConfig {
   @Override
   public ConfigProperty<Boolean> enabled() {
     return this.enabled;
+  }
+
+  public ConfigProperty<Boolean> command() {
+    return this.enabledCommandChoker;
+  }
+  public ConfigProperty<Boolean> commandSendInstantly() {
+    return this.commandSendInstantly;
   }
 
   public ConfigProperty<Boolean> timestamp() {
