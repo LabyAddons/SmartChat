@@ -9,6 +9,11 @@ public enum Sound {
   LABYMOD_BUTTON_ON("labymod", "ui.switch.on"),
   LABYMOD_BUTTON_OFF("labymod", "ui.switch.off"),
 
+  LABYMOD_HUDWIDGET_ALIGN("labymod", "hudwidget.align"),
+  LABYMOD_HUDWIDGET_ATTACH("labymod", "hudwidget.attach"),
+  LABYMOD_HUDWIDGET_TRASH("labymod", "hudwidget.trash"),
+  LABYMOD_SERVER_MOVE("labymod", "ui.server.move"),
+
   MINECRAFT_CHICKEN_POP("minecraft", "entity.chicken.egg");
 
   final String namespace;

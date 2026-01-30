@@ -37,9 +37,11 @@ public class AntiCommandChokerListener {
     event.setCancelled(true);
 
     ChatExecutor chatExecutor = Laby.references().chatExecutor();
-    chatExecutor.displayClientMessage(Component.text(message));
-    chatExecutor.displayClientMessage(Component.translatable("smartchat.settings.commandSendInstantly.button.runCommand").clickEvent(ClickEvent.runCommand(command))
-        .append(Component.translatable("smartchat.settings.commandSendInstantly.button.clipboard").clickEvent(ClickEvent.copyToClipboard(command))));
+
+    chatExecutor.displayClientMessage(Component.translatable("smartchat.settings.commandSendInstantly.input", Component.text(message)));
+    chatExecutor.displayClientMessage(
+                Component.translatable("smartchat.settings.commandSendInstantly.button.execute").clickEvent(ClickEvent.runCommand(command))
+        .append(Component.translatable("smartchat.settings.commandSendInstantly.button.suggest").clickEvent(ClickEvent.suggestCommand(command))));
   }
 
 }

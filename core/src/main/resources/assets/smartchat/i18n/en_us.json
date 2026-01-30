@@ -28,9 +28,10 @@
       "commandSendInstantly": {
         "name": "Send Commands Instantly",
         "description": "Automatically sends the command even if '7' is typed instead of '/'.",
+        "input": "Input: %s",
         "button": {
-          "runCommand": "§a[Run Command]",
-          "clipboard": "§2[Clipboard]"
+          "execute": "§a[Execute]",
+          "suggest": "§2[Suggest]"
         }
       },
       "enabledCopy": {
@@ -67,6 +68,10 @@
           "labymodLootboxSpecial": "Lootbox Special",
           "labymodButtonOn": "Button on",
           "labymodButtonOff": "Button off",
+
+          "labymodHudwidgetAlign": "Widget Align",
+          "labymodHudwidgetAttach": "Widget Attach",
+          "labymodHudwidgetTrash": "Widget Trash",
 
           "minecraftChickenPop": "Chicken Pop"
         }

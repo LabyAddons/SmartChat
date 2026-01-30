@@ -1,3 +1,5 @@
+import net.labymod.labygradle.common.extension.model.labymod.ReleaseChannels
+
 plugins {
     id("net.labymod.labygradle")
     id("net.labymod.labygradle.addon")
@@ -6,7 +8,7 @@ plugins {
 val versions = providers.gradleProperty("net.labymod.minecraft-versions").get().split(";")
 
 group = "de.jardateien.smartchat"
-version = providers.environmentVariable("VERSION").getOrElse("1.2.5")
+version = providers.environmentVariable("VERSION").getOrElse("1.2.1")
 
 labyMod {
     defaultPackageName = "de.jardateien.smartchat"
