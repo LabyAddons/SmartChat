@@ -58,6 +58,10 @@
         "name": "Ping sound",
         "description": "Plays a sound when someone writes your name in chat"
       },
+      "playSound": {
+        "name": "Preview sound.",
+        "text": "Play"
+      },
       "type": {
         "name": "Type",
         "description": "Select your favorite sound",
@@ -72,6 +76,7 @@
           "labymodHudwidgetAlign": "Widget Align",
           "labymodHudwidgetAttach": "Widget Attach",
           "labymodHudwidgetTrash": "Widget Trash",
+          "labymodServerMove": "Server Move",
 
           "minecraftChickenPop": "Chicken Pop"
         }
