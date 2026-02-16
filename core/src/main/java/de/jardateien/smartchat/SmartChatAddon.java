@@ -27,17 +27,6 @@ public class SmartChatAddon extends LabyAddon<SmartChatConfiguration> {
     placeholderRegistry = ((ReferenceStorage) this.referenceStorageAccessor()).placeholderRegistry();
 
     this.registerSettingCategory();
-
-    /*
-    https://modrinth.com/mod/compacting?version=1.21.6
-    https://modrinth.com/mod/nochatclear
-    https://modrinth.com/mod/chat-tools/gallery
-    https://modrinth.com/mod/chat-highlight/gallery
-    https://modrinth.com/mod/chatutils/gallery?version=1.20.4&loader=fabric
-    https://modrinth.com/mod/chatstack/gallery?version=1.21.5
-    https://modrinth.com/mod/chatping/gallery
-     */
-
     this.registerListener(new AntiCommandChokerListener(this));
     this.registerListener(new ChatMessageSendListener(this));
     this.registerListener(new ChatPingReceiveListener(this));

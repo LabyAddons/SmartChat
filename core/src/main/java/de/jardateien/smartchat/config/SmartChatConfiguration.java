@@ -75,14 +75,11 @@ public class SmartChatConfiguration extends AddonConfig {
   @SettingRequires("pingSound")
   @SliderSetting(min = 0F, max = 2F, steps = 0.1F)
   private final ConfigProperty<Float> pitch = new ConfigProperty<>(1.2F);
-  @IntroducedIn(namespace = "smartchat", value = "1.0.5")
+  @IntroducedIn(namespace = "smartchat", value = "1.2.5")
   @SettingRequires("pingSound")
   @MethodOrder(after = "pitch")
   @ButtonSetting
   public void playSound() {
-    if(!this.enabled.get() && !this.pingSound.get())
-      return;
-
     Sound sound = this.type.get();
     Laby.labyAPI().minecraft().sounds()
         .playSound(ResourceLocation.create(
