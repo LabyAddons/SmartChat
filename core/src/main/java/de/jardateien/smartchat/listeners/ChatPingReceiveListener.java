@@ -9,7 +9,7 @@ import net.labymod.api.client.chat.ChatMessage;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.chat.ChatReceiveEvent;
-import java.util.Objects;
+import java.util.UUID;
 
 public class ChatPingReceiveListener {
 
@@ -23,9 +23,14 @@ public class ChatPingReceiveListener {
   public void onChatReceive(ChatReceiveEvent receiveEvent) {
     if(!this.configuration.enabled().get() || !this.configuration.enabledPing().get()) return;
     ChatMessage chatMessage = receiveEvent.chatMessage();
+    UUID sender = chatMessage.getSenderUniqueId();
+
+    if(sender == null)
+      return;
 
     LabyAPI labyAPI = Laby.labyAPI();
-    if(Objects.equals(chatMessage.getSenderUniqueId(), labyAPI.getUniqueId())) return;
+    if(labyAPI.getUniqueId().toString().equals(sender.toString()))
+      return;
 
     String message = chatMessage.getFormattedText();
     if(!message.contains(labyAPI.getName())) return;
