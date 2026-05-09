@@ -11,6 +11,7 @@ import net.labymod.api.client.gui.screen.widget.widgets.input.dropdown.DropdownW
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.configuration.loader.annotation.ConfigName;
 import net.labymod.api.configuration.loader.annotation.IntroducedIn;
+import net.labymod.api.configuration.loader.annotation.SpriteSlot;
 import net.labymod.api.configuration.loader.property.ConfigProperty;
 import net.labymod.api.configuration.settings.annotation.SettingRequires;
 import net.labymod.api.configuration.settings.annotation.SettingSection;
@@ -19,6 +20,7 @@ import net.labymod.api.util.MethodOrder;
 @ConfigName("settings")
 public class SmartChatConfiguration extends AddonConfig {
 
+  @SpriteSlot
   @IntroducedIn(namespace = "smartchat", value = "1.0.0")
   @SettingSection(value = "general", center = true)
   @SwitchSetting
@@ -79,7 +81,7 @@ public class SmartChatConfiguration extends AddonConfig {
   @SettingRequires("pingSound")
   @MethodOrder(after = "pitch")
   @ButtonSetting
-  public void playSound() {
+  public final void playSound() {
     Sound sound = this.type.get();
     Laby.labyAPI().minecraft().sounds()
         .playSound(ResourceLocation.create(
