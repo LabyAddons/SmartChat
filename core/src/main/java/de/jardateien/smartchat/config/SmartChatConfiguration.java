@@ -13,6 +13,7 @@ import net.labymod.api.configuration.loader.annotation.ConfigName;
 import net.labymod.api.configuration.loader.annotation.IntroducedIn;
 import net.labymod.api.configuration.loader.annotation.SpriteSlot;
 import net.labymod.api.configuration.loader.property.ConfigProperty;
+import net.labymod.api.configuration.settings.Setting;
 import net.labymod.api.configuration.settings.annotation.SettingRequires;
 import net.labymod.api.configuration.settings.annotation.SettingSection;
 import net.labymod.api.util.MethodOrder;
@@ -25,6 +26,11 @@ public class SmartChatConfiguration extends AddonConfig {
   @SettingSection(value = "general", center = true)
   @SwitchSetting
   private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
+  @MethodOrder(after = "enabled")
+  @ButtonSetting
+  public void joinDiscord(Setting setting) {
+    Laby.references().chatExecutor().openUrl("https://discord.gg/Mf7HtkqPZZ");
+  }
 
   @IntroducedIn(namespace = "smartchat", value = "1.2.0")
   @SettingSection(value = "antiCommandChoker", center = true)
@@ -60,6 +66,15 @@ public class SmartChatConfiguration extends AddonConfig {
   @SettingRequires("enabledCopy")
   @TextFieldSetting
   private final ConfigProperty<String> copyHover = new ConfigProperty<>("Click to copy.");
+
+  @IntroducedIn(namespace = "smartchat", value = "1.2.5")
+  @SettingSection(value = "reply", center = true)
+  @SwitchSetting
+  private final ConfigProperty<Boolean> enabledReply = new ConfigProperty<>(true);
+  @IntroducedIn(namespace = "smartchat", value = "1.2.5")
+  @SettingRequires("enabledReply")
+  @TextFieldSetting
+  private final ConfigProperty<String> replyFormat = new ConfigProperty<>(" &7[&9➥&7]");
 
   @IntroducedIn(namespace = "smartchat", value = "1.0.5")
   @SettingSection(value = "chatNotification", center = true)
@@ -120,6 +135,13 @@ public class SmartChatConfiguration extends AddonConfig {
   }
   public ConfigProperty<String> copyHover() {
     return this.copyHover;
+  }
+
+  public ConfigProperty<Boolean> reply() {
+    return this.enabledReply;
+  }
+  public ConfigProperty<String> replyFormat() {
+    return this.replyFormat;
   }
 
   public ConfigProperty<Boolean> enabledPing() {
