@@ -9,8 +9,6 @@ import de.jardateien.smartchat.listeners.CopyChatReceiveListener;
 import de.jardateien.smartchat.listeners.MessageReplyListener;
 import de.jardateien.smartchat.listeners.TimestampChatReceiveListener;
 import de.jardateien.smartchat.registry.placeholder.*;
-import de.jardateien.smartchat.registry.placeholder.voicechat.VoiceMuteDurationPlaceholder;
-import de.jardateien.smartchat.registry.placeholder.voicechat.VoiceMuteReasonPlaceholder;
 import de.jardateien.smartchat.ui.activity.PlaceholderMenuChatActivity;
 import net.labymod.api.addon.LabyAddon;
 import net.labymod.api.client.component.Component;
@@ -59,11 +57,6 @@ public class SmartChatAddon extends LabyAddon<SmartChatConfiguration> {
     placeholderRegistry.register(new RotationPlaceholder(this));
     placeholderRegistry.register(new WorldBiomePlaceholder(this));
     placeholderRegistry.register(new WorldDimensionPlaceholder(this));
-
-    if(this.labyAPI().addonService().getAddon("voicechat").isPresent()) {
-      placeholderRegistry.register(new VoiceMuteDurationPlaceholder(this));
-      placeholderRegistry.register(new VoiceMuteReasonPlaceholder(this));
-    }
 
   }
 

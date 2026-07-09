@@ -27,6 +27,7 @@ public class SmartChatConfiguration extends AddonConfig {
   @SwitchSetting
   private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
   @MethodOrder(after = "enabled")
+  @IntroducedIn(namespace = "smartchat", value = "1.3.5")
   @ButtonSetting
   public void joinDiscord() {
     Laby.references().chatExecutor().openUrl("https://discord.gg/Mf7HtkqPZZ");
