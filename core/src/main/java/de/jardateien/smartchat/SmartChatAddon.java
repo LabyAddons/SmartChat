@@ -6,8 +6,11 @@ import de.jardateien.smartchat.listeners.AntiCommandChokerListener;
 import de.jardateien.smartchat.listeners.ChatMessageSendListener;
 import de.jardateien.smartchat.listeners.ChatPingReceiveListener;
 import de.jardateien.smartchat.listeners.CopyChatReceiveListener;
+import de.jardateien.smartchat.listeners.MessageReplyListener;
 import de.jardateien.smartchat.listeners.TimestampChatReceiveListener;
 import de.jardateien.smartchat.registry.placeholder.*;
+import de.jardateien.smartchat.registry.placeholder.voicechat.VoiceMuteDurationPlaceholder;
+import de.jardateien.smartchat.registry.placeholder.voicechat.VoiceMuteReasonPlaceholder;
 import de.jardateien.smartchat.ui.activity.PlaceholderMenuChatActivity;
 import net.labymod.api.addon.LabyAddon;
 import net.labymod.api.client.component.Component;
@@ -31,6 +34,7 @@ public class SmartChatAddon extends LabyAddon<SmartChatConfiguration> {
     this.registerListener(new ChatMessageSendListener(this));
     this.registerListener(new ChatPingReceiveListener(this));
     this.registerListener(new CopyChatReceiveListener(this));
+    this.registerListener(new MessageReplyListener(this));
     this.registerListener(new TimestampChatReceiveListener(this));
 
     ChatButtonWidget placeholderMenu = ChatButtonWidget.icon(
@@ -38,6 +42,7 @@ public class SmartChatAddon extends LabyAddon<SmartChatConfiguration> {
         Icon.texture(ResourceLocation.create("smartchat", "textures/chat.png")),
         PlaceholderMenuChatActivity::new
     );
+
     placeholderMenu.setHoverComponent(Component.translatable("smartchat.chatInput.placeholderMenu.name"));
     placeholderMenu.property(this.configuration().enabled());
     this.labyAPI().chatProvider().chatInputService().register(placeholderMenu);
@@ -54,6 +59,12 @@ public class SmartChatAddon extends LabyAddon<SmartChatConfiguration> {
     placeholderRegistry.register(new RotationPlaceholder(this));
     placeholderRegistry.register(new WorldBiomePlaceholder(this));
     placeholderRegistry.register(new WorldDimensionPlaceholder(this));
+
+    if(this.labyAPI().addonService().getAddon("voicechat").isPresent()) {
+      placeholderRegistry.register(new VoiceMuteDurationPlaceholder(this));
+      placeholderRegistry.register(new VoiceMuteReasonPlaceholder(this));
+    }
+
   }
 
   @Override
