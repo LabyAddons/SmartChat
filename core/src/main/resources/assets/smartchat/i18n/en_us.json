@@ -2,7 +2,7 @@
   "smartchat": {
     "settings": {
       "enabled": {
-        "name": "Enabled"
+        "name": "Enabled SmartChat"
       },
       "joinDiscord": {
         "name": "Discord Server",
