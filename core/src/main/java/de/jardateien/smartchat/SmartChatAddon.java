@@ -57,7 +57,6 @@ public class SmartChatAddon extends LabyAddon<SmartChatConfiguration> {
     placeholderRegistry.register(new RotationPlaceholder(this));
     placeholderRegistry.register(new WorldBiomePlaceholder(this));
     placeholderRegistry.register(new WorldDimensionPlaceholder(this));
-
   }
 
   @Override
