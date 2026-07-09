@@ -24,7 +24,6 @@ public class ChatPingReceiveListener {
     if(!this.configuration.enabled().get() || !this.configuration.enabledPing().get()) return;
     ChatMessage chatMessage = receiveEvent.chatMessage();
     UUID sender = chatMessage.getSenderUniqueId();
-
     if(sender == null)
       return;
 
