@@ -78,17 +78,6 @@ public class SmartChatConfiguration extends AddonConfig {
   @TextFieldSetting
   private final ConfigProperty<String> copyHover = new ConfigProperty<>("Click to copy.");
 
-  @SpriteSlot(x = 1)
-  @IntroducedIn(namespace = "smartchat", value = "1.2.5")
-  @SettingSection(value = "reply", center = true)
-  @SwitchSetting
-  private final ConfigProperty<Boolean> enabledReply = new ConfigProperty<>(true);
-  @SpriteSlot(x = 1, y = 1)
-  @IntroducedIn(namespace = "smartchat", value = "1.2.5")
-  @SettingRequires("enabledReply")
-  @TextFieldSetting
-  private final ConfigProperty<String> replyFormat = new ConfigProperty<>(" &7[&9➥&7]");
-
   @SpriteSlot
   @IntroducedIn(namespace = "smartchat", value = "1.0.5")
   @SettingSection(value = "chatNotification", center = true)
@@ -153,13 +142,6 @@ public class SmartChatConfiguration extends AddonConfig {
   }
   public ConfigProperty<String> copyHover() {
     return this.copyHover;
-  }
-
-  public ConfigProperty<Boolean> reply() {
-    return this.enabledReply;
-  }
-  public ConfigProperty<String> replyFormat() {
-    return this.replyFormat;
   }
 
   public ConfigProperty<Boolean> enabledPing() {

@@ -6,7 +6,6 @@ import de.jardateien.smartchat.listeners.AntiCommandChokerListener;
 import de.jardateien.smartchat.listeners.ChatMessageSendListener;
 import de.jardateien.smartchat.listeners.ChatPingReceiveListener;
 import de.jardateien.smartchat.listeners.CopyChatReceiveListener;
-import de.jardateien.smartchat.listeners.MessageReplyListener;
 import de.jardateien.smartchat.listeners.TimestampChatReceiveListener;
 import de.jardateien.smartchat.registry.placeholder.*;
 import de.jardateien.smartchat.ui.activity.PlaceholderMenuChatActivity;
@@ -32,7 +31,6 @@ public class SmartChatAddon extends LabyAddon<SmartChatConfiguration> {
     this.registerListener(new ChatMessageSendListener(this));
     this.registerListener(new ChatPingReceiveListener(this));
     this.registerListener(new CopyChatReceiveListener(this));
-    this.registerListener(new MessageReplyListener(this));
     this.registerListener(new TimestampChatReceiveListener(this));
 
     ChatButtonWidget placeholderMenu = ChatButtonWidget.icon(
