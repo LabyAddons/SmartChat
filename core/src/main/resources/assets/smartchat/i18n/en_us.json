@@ -10,9 +10,6 @@
         "description": "Click to join the Discord"
       },
       "header": {
-        "general": {
-          "name": "General"
-        },
         "antiCommandChoker": {
           "name": "AntiCommandChoker"
         },

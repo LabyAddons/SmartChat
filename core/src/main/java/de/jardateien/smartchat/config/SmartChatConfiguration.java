@@ -24,7 +24,6 @@ public class SmartChatConfiguration extends AddonConfig {
 
   @SpriteSlot(x = 5, y = 1)
   @IntroducedIn(namespace = "smartchat", value = "1.0.0")
-  @SettingSection(value = "general", center = true)
   @SwitchSetting
   private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
   @SpriteSlot(x = 5)
@@ -32,12 +31,12 @@ public class SmartChatConfiguration extends AddonConfig {
   @IntroducedIn(namespace = "smartchat", value = "1.3.5")
   @ButtonSetting
   public void joinDiscord() {
-    Laby.references().chatExecutor().openUrl("https://discord.gg/Mf7HtkqPZZ");
+    Laby.references().chatExecutor().openUrl("https://discord.gg/NQPQGRkFYG");
   }
 
   @SpriteSlot(x = 4, y = 1)
   @IntroducedIn(namespace = "smartchat", value = "1.2.0")
-  @SettingSection(value = "antiCommandChoker", center = true)
+  @SettingSection(value = "antiCommandChoker")
   @SwitchSetting
   private final ConfigProperty<Boolean> enabledCommandChoker = new ConfigProperty<>(true);
   @SpriteSlot(x = 3, y = 1)
@@ -48,7 +47,7 @@ public class SmartChatConfiguration extends AddonConfig {
 
   @SpriteSlot(x = 2)
   @IntroducedIn(namespace = "smartchat", value = "1.1.0")
-  @SettingSection(value = "timestamp", center = true)
+  @SettingSection(value = "timestamp")
   @SwitchSetting
   private final ConfigProperty<Boolean> enabledTimestamp = new ConfigProperty<>(true);
   @SpriteSlot(x = 7, y = 1)
@@ -64,7 +63,7 @@ public class SmartChatConfiguration extends AddonConfig {
 
   @SpriteSlot(x = 6, y = 1)
   @IntroducedIn(namespace = "smartchat", value = "1.1.5")
-  @SettingSection(value = "copy", center = true)
+  @SettingSection(value = "copy")
   @SwitchSetting
   private final ConfigProperty<Boolean> enabledCopy = new ConfigProperty<>(true);
   @SpriteSlot(x = 1, y = 1)
@@ -80,7 +79,7 @@ public class SmartChatConfiguration extends AddonConfig {
 
   @SpriteSlot
   @IntroducedIn(namespace = "smartchat", value = "1.0.5")
-  @SettingSection(value = "chatNotification", center = true)
+  @SettingSection(value = "chatNotification")
   @SwitchSetting
   private final ConfigProperty<Boolean> pingSound = new ConfigProperty<>(true);
   @SpriteSlot(x = 7)

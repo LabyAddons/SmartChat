@@ -24,11 +24,8 @@ public class ChatPingReceiveListener {
     if(!this.configuration.enabled().get() || !this.configuration.enabledPing().get()) return;
     ChatMessage chatMessage = receiveEvent.chatMessage();
     UUID sender = chatMessage.getSenderUniqueId();
-    if(sender == null)
-      return;
-
     LabyAPI labyAPI = Laby.labyAPI();
-    if(labyAPI.getUniqueId().toString().equals(sender.toString()))
+    if(sender != null && labyAPI.getUniqueId().toString().equals(sender.toString()))
       return;
 
     String message = chatMessage.getFormattedText();
@@ -36,9 +33,9 @@ public class ChatPingReceiveListener {
 
     Sound type = this.configuration.type().get();
 
-    labyAPI.minecraft().sounds()
-        .playSound(ResourceLocation.create(type.getNamespace(), type.getPath()),
-            this.configuration.volume().get(), this.configuration.pitch().get());
+    labyAPI.minecraft().sounds().playSound(
+        ResourceLocation.create(type.getNamespace(), type.getPath()),
+        this.configuration.volume().get(), this.configuration.pitch().get());
   }
 
 }
